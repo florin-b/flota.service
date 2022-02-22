@@ -78,9 +78,6 @@ public class OperatiiAngajat {
 	}
 
 	public List<Angajat> getAngajati(String tipAngajat, String unitLog, String codDepart, String codAngajat) {
-		
-		
-		
 
 		List<Angajat> listAngajati = new ArrayList<>();
 
@@ -145,7 +142,7 @@ public class OperatiiAngajat {
 
 	public List<CategorieAngajat> getCategSubord(String tipAngajat) {
 		List<CategorieAngajat> categorii = new ArrayList<>();
-		
+
 		try (Connection conn = new DBManager().getProdDataSource().getConnection();
 				PreparedStatement stmt = conn.prepareStatement(SqlQueries.getCategoriiSubordonati())) {
 
@@ -171,7 +168,6 @@ public class OperatiiAngajat {
 	}
 
 	public List<AngajatCategorie> getAngajatCategorie(String filiala, String tipAngajat, String departament) {
-		
 
 		List<AngajatCategorie> listAngajati = new ArrayList<>();
 
@@ -418,13 +414,16 @@ public class OperatiiAngajat {
 
 			String adresaMail = "";
 			String textMail = "";
+			String nrAuto = "";
+			
+			OperatiiMasina opMasina = new OperatiiMasina();
 			for (Distanta distanta : listDistante) {
 
 				adresaMail = getAdresaMailAngajat(conn, distanta.getCodAngajat());
-
+				nrAuto = opMasina.getNrAutoCodGps(conn, distanta.getCodDisp());
 				textMail = "\n";
 
-				textMail += "In data de " + data + " ati efectuat " + distanta.getDistanta() + " km si nu aveti delegatie creata in sistem. ";
+				textMail += "In data de " + data + " ati efectuat " + distanta.getDistanta() + " (" + nrAuto + ") km si nu aveti delegatie creata in sistem. ";
 				textMail += "\n";
 				textMail += "Daca trebuia sa o intocmiti si nu ati facut-o va rugam sa o creati in cel mai scurt timp.";
 				textMail += "\n\n";
@@ -436,6 +435,7 @@ public class OperatiiAngajat {
 
 		} catch (SQLException e) {
 			logger.error(Utils.getStackTrace(e));
+			MailOperations.sendMail(e.toString());
 		}
 
 	}

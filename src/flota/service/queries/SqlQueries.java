@@ -69,11 +69,8 @@ public class SqlQueries {
 		sqlString.append(" order by h.id ");
 
 		return sqlString.toString();
-	}	
-	
-	
-	
-	
+	}
+
 	public static String getDelegatiiAprobareHeaderVanzari(String unitLogQs, String departQs) {
 		StringBuilder sqlString = new StringBuilder();
 
@@ -331,7 +328,7 @@ public class SqlQueries {
 		return sqlString.toString();
 
 	}
-	
+
 	public static String getCoordonateTraseu() {
 		StringBuilder sqlString = new StringBuilder();
 
@@ -341,8 +338,6 @@ public class SqlQueries {
 		sqlString.append(" trim(regexp_replace(n.car_number,'-| ','')) = trim(regexp_replace(z.nrauto,'-| ','')) and z.id =? ) ");
 		sqlString.append(" and gtime between to_date(?,'dd-mm-yyyy HH24:mi') ");
 		sqlString.append(" and to_date(?,'dd-mm-yyyy HH24:mi')  ) x where remainder(x.idt,2) = 0 order by x.km ");
-
-		
 
 		return sqlString.toString();
 	}
@@ -541,8 +536,7 @@ public class SqlQueries {
 
 		return sqlString.toString();
 	}
-	
-	
+
 	public static String getSubordDirectorJuridic() {
 		StringBuilder sqlString = new StringBuilder();
 
@@ -552,8 +546,7 @@ public class SqlQueries {
 		sqlString.append(" order by nume");
 
 		return sqlString.toString();
-	}	
-	
+	}
 
 	public static String getMasiniAngajatData() {
 		StringBuilder sqlString = new StringBuilder();
@@ -684,8 +677,7 @@ public class SqlQueries {
 		return sqlString.toString();
 
 	}
-	
-	
+
 	public static String getCodAprobareCVIP() {
 		StringBuilder sqlString = new StringBuilder();
 
@@ -695,9 +687,8 @@ public class SqlQueries {
 
 		return sqlString.toString();
 
-	}	
-	
-	
+	}
+
 	public static String getCodAprobareRGEST() {
 		StringBuilder sqlString = new StringBuilder();
 
@@ -707,8 +698,7 @@ public class SqlQueries {
 
 		return sqlString.toString();
 
-	}		
-	
+	}
 
 	public static String getCodAprobareKA08() {
 		StringBuilder sqlString = new StringBuilder();
@@ -757,11 +747,7 @@ public class SqlQueries {
 
 	public static String getNrAutoCodGps() {
 		StringBuilder sqlString = new StringBuilder();
-
-		sqlString.append(" select nexus_coresp from our_vehicles where vcode=? or old_vcode = ?");
-
-		System.out.println("getNrAutoCodGps: " + sqlString.toString());
-
+		sqlString.append(" select car_number from our_vehicles where vcode=? ");
 		return sqlString.toString();
 	}
 
@@ -962,6 +948,8 @@ public class SqlQueries {
 
 		return sqlString.toString();
 	}
+
+
 
 	public static String getStareGps() {
 
