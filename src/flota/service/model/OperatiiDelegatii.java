@@ -116,7 +116,7 @@ public class OperatiiDelegatii {
 		if (tipAngajat.equals("SDIP"))
 			codDepart = "11";
 		
-		System.out.println("getDelegatiiAprobari: " + tipAngajat + " , " + unitLog + " , " + codDepart);
+		
 
 		boolean isPersVanzari = Utils.isAngajatVanzari(tipAngajat);
 
@@ -135,11 +135,13 @@ public class OperatiiDelegatii {
 		else {
 			if (tipAngajat.equals("DZ"))
 				sqlString = SqlQueries.getDelegatiiAprobareHeaderNONVanzari_DZ(unitLogQs);
-			else if (tipAngajat.equals("DAG"))
+			else if (tipAngajat.equals("DAG") || tipAngajat.equals("DLOG"))
 				sqlString = SqlQueries.getDelegatiiAprobareHeaderNONVanzari_DAG(unitLogQs);
 			else
 				sqlString = SqlQueries.getDelegatiiAprobareHeaderNONVanzari(unitLogQs);
 		}
+		
+		System.out.println("getDelegatiiAprobari: " + sqlString + " , "  + tipAngajat + " , " + unitLog + " , " + codDepart);
 
 		try (Connection conn = new DBManager().getProdDataSource().getConnection();
 				PreparedStatement stmt = conn.prepareStatement(sqlString, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);) {
@@ -532,11 +534,13 @@ public class OperatiiDelegatii {
 		else {
 			if (tipAngajat.equals("DJ"))
 				sqlString = SqlQueries.afiseazaDelegatiiSubordDirectorJuridic();
+			else if (tipAngajat.equals("DLOG"))
+				sqlString = SqlQueries.afiseazaDelegatiiSubordDirectorLogistica();
 			else
 				sqlString = SqlQueries.afiseazaDelegatiiSubordNONVanzari(unitLogQs);
 		}
 
-		System.out.println("afiseazaDelegatiisubord: " + sqlString);
+		System.out.println("afiseazaDelegatiisubord: " + sqlString + " , " + tipAngajat + " , " + unitLog + " , " + codDepart);
 
 		try (Connection conn = new DBManager().getProdDataSource().getConnection();
 				PreparedStatement stmt = conn.prepareStatement(sqlString, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);) {
@@ -558,7 +562,7 @@ public class OperatiiDelegatii {
 				stmt.setString(pos++, DateUtils.formatDateSap(dataStop));
 			} else {
 
-				if (tipAngajat.equals("DJ")) {
+				if (tipAngajat.equals("DJ") || tipAngajat.equals("DLOG")) {
 					stmt.setString(1, DateUtils.formatDateSap(dataStart));
 					stmt.setString(2, DateUtils.formatDateSap(dataStop));
 				} else {
@@ -654,7 +658,7 @@ public class OperatiiDelegatii {
 
 		String unitLogQs = Utils.generateQs(unitLog);
 
-		if (tipAngajat.equals("DAG"))
+		if (tipAngajat.equals("DAG") || tipAngajat.equals("DLOG"))
 			sqlString = SqlQueries.getDelegatiiTerminateNONVanzari_DAG(unitLogQs);
 		else {
 			if (isPersVanzari)

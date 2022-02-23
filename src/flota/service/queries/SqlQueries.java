@@ -259,6 +259,20 @@ public class SqlQueries {
 
 		return sqlString.toString();
 	}
+	
+	
+	public static String afiseazaDelegatiiSubordDirectorLogistica() {
+		StringBuilder sqlString = new StringBuilder();
+
+		sqlString.append(" select h.id,  h.codangajat, h.data_plecare, h.ora_plecare, ag.nume, h.distcalc, h.distrespins, ");
+		sqlString.append(" h.data_sosire, h.distreal, h.distrecalc ");
+		sqlString.append(" from sapprd.zdelegatiehead h, personal ag where h.mandt='900' and h.codangajat = ag.cod and ");
+		sqlString.append(" ag.functie in (select cod from functii_non_vanzari where aprobat='DLOG')  ");
+		sqlString.append(" and h.datac between ? and ? ");
+		sqlString.append(" order by h.id ");
+
+		return sqlString.toString();
+	}
 
 	public static String afiseazaDelegatiiSubordNONVanzari(String unitLogQs) {
 		StringBuilder sqlString = new StringBuilder();
