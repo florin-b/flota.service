@@ -423,7 +423,7 @@ public class OperatiiAngajat {
 				nrAuto = opMasina.getNrAutoCodGps(conn, distanta.getCodDisp());
 				textMail = "\n";
 
-				textMail += "In data de " + data + " ati efectuat " + distanta.getDistanta() + " (" + nrAuto + ") km si nu aveti delegatie creata in sistem. ";
+				textMail += "In data de " + data + " ati efectuat " + distanta.getDistanta() + " km (" + nrAuto + ") si nu aveti delegatie creata in sistem. ";
 				textMail += "\n";
 				textMail += "Daca trebuia sa o intocmiti si nu ati facut-o va rugam sa o creati in cel mai scurt timp.";
 				textMail += "\n\n";

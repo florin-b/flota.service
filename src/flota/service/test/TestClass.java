@@ -38,7 +38,7 @@ public class TestClass {
 		// ",
 		// ""));
 
-		System.out.println("De aprobat:" + new OperatiiDelegatii().getDelegatiiAprobari("DLOG", "GL90", ""));
+		//System.out.println("De aprobat:" + new OperatiiDelegatii().getDelegatiiAprobari("DLOG", "GL90", ""));
 		
 		//System.out.println("De aprobat:" + new OperatiiDelegatii().getDelegatiiAprobari("SMG", "BU10", "11"));
 
@@ -57,16 +57,16 @@ public class TestClass {
 		// System.out.println("Modif del: " + new
 		// OperatiiDelegatii().getDelegatiiModificare("00000475"));
 
-		/*
-		 * List<LatLng> coords = new ArrayList<LatLng>();
-		 * 
-		 * coords.add(new LatLng(45.473149, 27.936426));
-		 * 
-		 * 
-		 * coords.add(new LatLng(45.785878, 27.802911));
-		 * 
-		 * System.out.println("REs: " + MapUtils.getAdreseCoordonate(coords));
-		 */
+		
+		  List<LatLng> coords = new ArrayList<LatLng>();
+		  
+		  coords.add(new LatLng(45.473149, 27.936426));
+		  
+		  
+		  coords.add(new LatLng(45.785878, 27.802911));
+		  
+		  System.out.println("REs: " + MapUtils.getAdreseCoordonate(coords));
+		 
 
 		// System.out.println("Stare gps: " + new
 		// OperatiiMasina().getStareGps("00083045"));
