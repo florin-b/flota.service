@@ -57,16 +57,12 @@ public class TestClass {
 		// System.out.println("Modif del: " + new
 		// OperatiiDelegatii().getDelegatiiModificare("00000475"));
 
-		
+/*		
 		  List<LatLng> coords = new ArrayList<LatLng>();
-		  
 		  coords.add(new LatLng(45.473149, 27.936426));
-		  
-		  
 		  coords.add(new LatLng(45.785878, 27.802911));
-		  
 		  System.out.println("REs: " + MapUtils.getAdreseCoordonate(coords));
-		 
+	*/	 
 
 		// System.out.println("Stare gps: " + new
 		// OperatiiMasina().getStareGps("00083045"));
@@ -76,20 +72,20 @@ public class TestClass {
 		// stops=GALATI / GALATI,BRAILA / BRAILA, nrAuto=GL-09-RRG, distreal=0,
 		// unitLog=BU90, id=null]
 
-		/*
+		
 		DelegatieNoua delegatie = new DelegatieNoua();
 
-		delegatie.setCodAngajat("00017858");
-		delegatie.setTipAngajat("RGEST");
+		delegatie.setCodAngajat("00092248");
+		delegatie.setTipAngajat("CVA");
 		delegatie.setDataP("21-08-2020");
 		delegatie.setOraP("0500");
 		delegatie.setDataS("21-08-2020");
-		delegatie.setNrAuto("GL-40-EDI");
+		delegatie.setNrAuto("B-81-XRS");
 		delegatie.setDistcalc("21");
-*/
+
 		//getCodAprobare();
 
-		//new OperatiiDelegatii().adaugaDelegatie(delegatie);
+		new OperatiiDelegatii().adaugaDelegatie(delegatie);
 		
 		
 		//MailOperations.sendMail("Flota JOB", "Start");

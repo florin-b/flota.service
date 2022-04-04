@@ -40,6 +40,8 @@ public class HelperAprobare {
 			codAprobare = getCodAprobareCVR(conn, delegatie.getCodAngajat(), delegatie.getTipAngajat());
 		else if (delegatie.getTipAngajat().trim().equalsIgnoreCase("CVIP"))
 			codAprobare = getCodAprobareCVIP(conn, delegatie.getCodAngajat(), delegatie.getTipAngajat());
+		else if (delegatie.getTipAngajat().trim().equalsIgnoreCase("CVA"))
+			codAprobare = getCodAprobareCVA(conn, delegatie.getCodAngajat(), delegatie.getTipAngajat());
 		else if (delegatie.getTipAngajat().trim().equalsIgnoreCase("RGEST"))
 			codAprobare = getCodAprobareRGEST(conn, delegatie.getCodAngajat(), delegatie.getTipAngajat());
 		else
@@ -522,6 +524,46 @@ public class HelperAprobare {
 		return codAprobare;
 
 	}
+	
+	
+	public static String getCodAprobareCVA(Connection conn, String codAngajat, String tipAngajat) {
+
+		String codAprobare = null;
+		String codSMR = null;
+		String codDZ = null;
+
+		try (PreparedStatement stmt = conn.prepareStatement(SqlQueries.getCodAprobareCVA());) {
+
+			stmt.setString(1, codAngajat);
+			stmt.setString(2, tipAngajat);
+			stmt.executeQuery();
+
+			ResultSet rs = stmt.getResultSet();
+
+			while (rs.next()) {
+
+				if (rs.getString("aprobat").equalsIgnoreCase("SMR"))
+					codSMR = rs.getString("fid");
+
+				if (rs.getString("aprobat").equalsIgnoreCase("DZ"))
+					codDZ = rs.getString("fid");
+
+			}
+
+			if (codSMR != null)
+				codAprobare = codSMR;
+			else
+				codAprobare = codDZ;
+
+		} catch (SQLException e) {
+			MailOperations.sendMail(e.toString());
+			logger.error(Utils.getStackTrace(e));
+		}
+
+		return codAprobare;
+
+	}
+	
 
 	public static String getCodAprobareRGEST(Connection conn, String codAngajat, String tipAngajat) {
 
