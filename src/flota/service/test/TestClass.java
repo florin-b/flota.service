@@ -75,17 +75,18 @@ public class TestClass {
 		
 		DelegatieNoua delegatie = new DelegatieNoua();
 
-		delegatie.setCodAngajat("00092248");
+		delegatie.setCodAngajat("00071306");
 		delegatie.setTipAngajat("CVA");
 		delegatie.setDataP("21-08-2020");
 		delegatie.setOraP("0500");
 		delegatie.setDataS("21-08-2020");
-		delegatie.setNrAuto("B-81-XRS");
+		delegatie.setNrAuto("B-111-PRZ");
 		delegatie.setDistcalc("21");
 
 		//getCodAprobare();
 
 		new OperatiiDelegatii().adaugaDelegatie(delegatie);
+		
 		
 		
 		//MailOperations.sendMail("Flota JOB", "Start");
