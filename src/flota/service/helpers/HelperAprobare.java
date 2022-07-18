@@ -492,6 +492,7 @@ public class HelperAprobare {
 		String codAprobare = null;
 		String codSMR = null;
 		String codSDIP = null;
+		String codDZ = null;
 
 		try (PreparedStatement stmt = conn.prepareStatement(SqlQueries.getCodAprobareCVIP());) {
 
@@ -508,13 +509,18 @@ public class HelperAprobare {
 
 				if (rs.getString("aprobat").equalsIgnoreCase("SDIP"))
 					codSDIP = rs.getString("fid");
+				
+				if (rs.getString("aprobat").equalsIgnoreCase("DZ"))
+					codDZ = rs.getString("fid");
 
 			}
 
 			if (codSDIP != null)
 				codAprobare = codSDIP;
-			else
+			else if (codSMR != null)
 				codAprobare = codSMR;
+			else
+				codAprobare = codDZ;
 
 		} catch (SQLException e) {
 			MailOperations.sendMail(e.toString());

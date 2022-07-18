@@ -15,13 +15,12 @@ import org.apache.logging.log4j.Logger;
 import com.google.maps.model.LatLng;
 
 import flota.service.beans.BeanDelegatieCauta;
-import flota.service.beans.DelegatieNoua;
 import flota.service.beans.PunctTraseu;
 import flota.service.database.DBManager;
 import flota.service.helpers.HelperAprobare;
+import flota.service.model.OperatiiAngajat;
 import flota.service.model.OperatiiDelegatii;
 import flota.service.model.OperatiiTraseu;
-import flota.service.model.ServiceDelegatii;
 import flota.service.utils.MapUtils;
 
 public class TestClass {
@@ -29,8 +28,10 @@ public class TestClass {
 	private static final Logger logger = LogManager.getLogger(TestClass.class);
 
 	public static void main(String[] args) throws SQLException {
+		
+		//System.out.println(new OperatiiAngajat().getAngajati("DD", "BU90", "11", "00018768"));
 
-		//new OperatiiDelegatii().recalculeazaDelegatie("159960248830");
+		//new OperatiiDelegatii().recalculeazaDelegatie("172491114219");
 		
 		// System.out.println(new OperatiiAngajat().getAngajatCategorie("MS10",
 		// "
@@ -38,7 +39,7 @@ public class TestClass {
 		// ",
 		// ""));
 
-		//System.out.println("De aprobat:" + new OperatiiDelegatii().getDelegatiiAprobari("DLOG", "GL90", ""));
+		System.out.println("De aprobat:" + new OperatiiDelegatii().getDelegatiiAprobari("DD", "BU90", "04"));
 		
 		//System.out.println("De aprobat:" + new OperatiiDelegatii().getDelegatiiAprobari("SMG", "BU10", "11"));
 
@@ -72,22 +73,23 @@ public class TestClass {
 		// stops=GALATI / GALATI,BRAILA / BRAILA, nrAuto=GL-09-RRG, distreal=0,
 		// unitLog=BU90, id=null]
 
+		/*
 		
 		DelegatieNoua delegatie = new DelegatieNoua();
 
-		delegatie.setCodAngajat("00071306");
-		delegatie.setTipAngajat("CVA");
-		delegatie.setDataP("21-08-2020");
+		delegatie.setCodAngajat("00060171");
+		delegatie.setTipAngajat("CVO");
+		delegatie.setDataP("13-05-2022");
 		delegatie.setOraP("0500");
-		delegatie.setDataS("21-08-2020");
-		delegatie.setNrAuto("B-111-PRZ");
+		delegatie.setDataS("13-05-2022");
+		delegatie.setNrAuto("B-110-DRP");
 		delegatie.setDistcalc("21");
 
 		//getCodAprobare();
 
 		new OperatiiDelegatii().adaugaDelegatie(delegatie);
 		
-		
+		*/
 		
 		//MailOperations.sendMail("Flota JOB", "Start");
 		//new OperatiiDelegatii().verificaDelegatiiTerminateCompanie();

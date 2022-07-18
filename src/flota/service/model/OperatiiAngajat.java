@@ -88,7 +88,9 @@ public class OperatiiAngajat {
 		String unitLogQs = Utils.generateQs(unitLog);
 		String departQs = Utils.generateQs(codDepart);
 
-		if (isPersVanzari) {
+		if (codAngajat.equals("00018768")) {
+			sqlString = SqlQueries.getConsilieriIP();
+		} else if (isPersVanzari) {
 			sqlString = SqlQueries.getSubordVanzari(unitLogQs, departQs);
 		} else {
 			if (tipAngajat.equals("DJ"))
@@ -104,10 +106,12 @@ public class OperatiiAngajat {
 			String[] unitLogs = unitLog.split(",");
 			String[] departs = codDepart.split(",");
 
+			if (!codAngajat.equals("00018768")) {
 			stmt.setString(1, tipAngajat);
 			stmt.setString(2, codAngajat);
+			}
 
-			if (!tipAngajat.equals("DJ")) {
+			if (!tipAngajat.equals("DJ") && !codAngajat.equals("00018768")) {
 
 				for (int ii = 0; ii < unitLogs.length; ii++)
 					stmt.setString(pos++, unitLogs[ii]);
@@ -415,7 +419,7 @@ public class OperatiiAngajat {
 			String adresaMail = "";
 			String textMail = "";
 			String nrAuto = "";
-			
+
 			OperatiiMasina opMasina = new OperatiiMasina();
 			for (Distanta distanta : listDistante) {
 

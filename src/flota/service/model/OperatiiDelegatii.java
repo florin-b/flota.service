@@ -112,17 +112,17 @@ public class OperatiiDelegatii {
 	public List<BeanDelegatieAprobare> getDelegatiiAprobari(String tipAngajat, String unitLog, String codDepart) {
 
 		
-		
 		if (tipAngajat.equals("SDIP"))
 			codDepart = "11";
 		
-		
-
 		boolean isPersVanzari = Utils.isAngajatVanzari(tipAngajat);
 
 		verificaDelegatiiTerminate(tipAngajat, unitLog, codDepart, isPersVanzari);
 
 		List<BeanDelegatieAprobare> listDelegatii = new ArrayList<>();
+		
+		if (tipAngajat.equals("DD") && codDepart.startsWith("04"))
+			unitLog += ",GL90"; 
 
 		String unitLogQs = Utils.generateQs(unitLog);
 
@@ -141,11 +141,11 @@ public class OperatiiDelegatii {
 				sqlString = SqlQueries.getDelegatiiAprobareHeaderNONVanzari(unitLogQs);
 		}
 		
-		System.out.println("getDelegatiiAprobari: " + sqlString + " , "  + tipAngajat + " , " + unitLog + " , " + codDepart);
 
 		try (Connection conn = new DBManager().getProdDataSource().getConnection();
 				PreparedStatement stmt = conn.prepareStatement(sqlString, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);) {
 
+			
 			stmt.setString(1, tipAngajat);
 
 			int pos = 2;
@@ -153,6 +153,7 @@ public class OperatiiDelegatii {
 			String[] unitLogs = unitLog.split(",");
 
 			String[] departs = codDepart.split(",");
+			
 
 			for (int ii = 0; ii < unitLogs.length; ii++)
 				stmt.setString(pos++, unitLogs[ii]);
@@ -166,6 +167,7 @@ public class OperatiiDelegatii {
 				if (!tipAngajat.equals("DZ"))
 					stmt.setString(pos++, tipAngajat);
 			}
+			
 
 			stmt.executeQuery();
 

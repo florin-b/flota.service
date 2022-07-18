@@ -538,6 +538,16 @@ public class SqlQueries {
 
 		return sqlString.toString();
 	}
+	
+	public static String getConsilieriIP() {
+		StringBuilder sqlString = new StringBuilder();
+
+		sqlString.append(" select cod, upper(nume) nume from personal where functie = ");
+		sqlString.append(" 'CVIP' ");
+		sqlString.append(" order by nume");
+
+		return sqlString.toString();
+	}
 
 	public static String getSubordNonVanzari(String unitLogQs) {
 		StringBuilder sqlString = new StringBuilder();
@@ -697,7 +707,7 @@ public class SqlQueries {
 
 		sqlString.append(" select distinct f.fid, f.aprobat from personal p, functii_non_vanzari f ");
 		sqlString.append(" where p.filiala = (select filiala from personal where cod=?) ");
-		sqlString.append(" and p.functie in ('SMR','SDIP') and p.functie = f.aprobat and f.cod=? ");
+		sqlString.append(" and p.functie in ('SMR','SDIP','DZ') and p.functie = f.aprobat and f.cod=? ");
 
 		return sqlString.toString();
 
