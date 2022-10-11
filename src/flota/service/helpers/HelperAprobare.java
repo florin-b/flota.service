@@ -315,7 +315,7 @@ public class HelperAprobare {
 			stmt.executeQuery();
 
 			ResultSet rs = stmt.getResultSet();
-
+			
 			while (rs.next()) {
 
 				if (rs.getString("aprobat").equalsIgnoreCase("SD"))

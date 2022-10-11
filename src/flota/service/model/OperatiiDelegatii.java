@@ -111,6 +111,7 @@ public class OperatiiDelegatii {
 
 	public List<BeanDelegatieAprobare> getDelegatiiAprobari(String tipAngajat, String unitLog, String codDepart) {
 
+		System.out.println("getDelegatiiAprobari: " +  tipAngajat  + " , " +  unitLog + " , " + codDepart);
 		
 		if (tipAngajat.equals("SDIP"))
 			codDepart = "11";

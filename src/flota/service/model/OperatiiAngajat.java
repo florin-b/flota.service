@@ -432,8 +432,12 @@ public class OperatiiAngajat {
 				textMail += "Daca trebuia sa o intocmiti si nu ati facut-o va rugam sa o creati in cel mai scurt timp.";
 				textMail += "\n\n";
 				textMail += "\n\n";
-
-				MailOperations.sendMailNotificare(adresaMail, textMail);
+				
+				if (nrAuto.trim().length() == 0) {
+					MailOperations.sendMail("sendMailAlerts: fara numar auto: " + listDistante + " , " + data );
+				}
+				else
+					MailOperations.sendMailNotificare(adresaMail, textMail);
 
 			}
 

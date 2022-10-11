@@ -782,7 +782,7 @@ public class SqlQueries {
 
 	public static String getNrAutoCodGps() {
 		StringBuilder sqlString = new StringBuilder();
-		sqlString.append(" select car_number from our_vehicles where vcode=? ");
+		sqlString.append(" select ktext from sapprd.aufk where mandt='900' and vcode= ? ");
 		return sqlString.toString();
 	}
 

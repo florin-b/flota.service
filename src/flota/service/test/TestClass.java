@@ -15,10 +15,10 @@ import org.apache.logging.log4j.Logger;
 import com.google.maps.model.LatLng;
 
 import flota.service.beans.BeanDelegatieCauta;
+import flota.service.beans.DelegatieNoua;
 import flota.service.beans.PunctTraseu;
 import flota.service.database.DBManager;
 import flota.service.helpers.HelperAprobare;
-import flota.service.model.OperatiiAngajat;
 import flota.service.model.OperatiiDelegatii;
 import flota.service.model.OperatiiTraseu;
 import flota.service.utils.MapUtils;
@@ -39,7 +39,7 @@ public class TestClass {
 		// ",
 		// ""));
 
-		System.out.println("De aprobat:" + new OperatiiDelegatii().getDelegatiiAprobari("DD", "BU90", "04"));
+		//System.out.println("De aprobat:" + new OperatiiDelegatii().getDelegatiiAprobari("DLOG", "GL90", ""));
 		
 		//System.out.println("De aprobat:" + new OperatiiDelegatii().getDelegatiiAprobari("SMG", "BU10", "11"));
 
@@ -74,22 +74,25 @@ public class TestClass {
 		// unitLog=BU90, id=null]
 
 		/*
+		 * 
+		 * 
+		 */
 		
 		DelegatieNoua delegatie = new DelegatieNoua();
 
-		delegatie.setCodAngajat("00060171");
-		delegatie.setTipAngajat("CVO");
+		delegatie.setCodAngajat("00059558");
+		delegatie.setTipAngajat("AIDC");
 		delegatie.setDataP("13-05-2022");
 		delegatie.setOraP("0500");
 		delegatie.setDataS("13-05-2022");
-		delegatie.setNrAuto("B-110-DRP");
+		delegatie.setNrAuto("B-103-CHJ");
 		delegatie.setDistcalc("21");
 
 		//getCodAprobare();
 
 		new OperatiiDelegatii().adaugaDelegatie(delegatie);
 		
-		*/
+		
 		
 		//MailOperations.sendMail("Flota JOB", "Start");
 		//new OperatiiDelegatii().verificaDelegatiiTerminateCompanie();

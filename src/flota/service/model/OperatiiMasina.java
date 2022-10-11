@@ -232,8 +232,7 @@ public class OperatiiMasina {
 			ResultSet rs = stmt.getResultSet();
 
 			while (rs.next()) {
-				nrAuto = rs.getString("car_number");
-
+				nrAuto = rs.getString("ktext");
 			}
 
 		}
