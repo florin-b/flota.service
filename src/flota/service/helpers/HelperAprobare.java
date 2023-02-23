@@ -490,7 +490,7 @@ public class HelperAprobare {
 	public static String getCodAprobareCVIP(Connection conn, String codAngajat, String tipAngajat) {
 
 		String codAprobare = null;
-		String codSMR = null;
+		
 		String codSDIP = null;
 		String codDZ = null;
 
@@ -504,9 +504,6 @@ public class HelperAprobare {
 
 			while (rs.next()) {
 
-				if (rs.getString("aprobat").equalsIgnoreCase("SMR"))
-					codSMR = rs.getString("fid");
-
 				if (rs.getString("aprobat").equalsIgnoreCase("SDIP"))
 					codSDIP = rs.getString("fid");
 				
@@ -517,8 +514,6 @@ public class HelperAprobare {
 
 			if (codSDIP != null)
 				codAprobare = codSDIP;
-			else if (codSMR != null)
-				codAprobare = codSMR;
 			else
 				codAprobare = codDZ;
 
@@ -637,5 +632,7 @@ public class HelperAprobare {
 		return codAprobare;
 
 	}
+	
+	
 
 }

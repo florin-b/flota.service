@@ -98,6 +98,9 @@ public class OperatiiDelegatii {
 
 				}
 			}
+			
+			if (delegatie.getTipAngajat().equals("DZ") || delegatie.getTipAngajat().equals("DD"))
+		 		aprobaDelegatie(idDelegatieNoua, delegatie.getTipAngajat(), "0", delegatie.getCodAngajat(), "2");
 
 		} catch (SQLException e) {
 			logger.error("Opriri: " + delegatie.getStops() + Utils.getStackTrace(e));

@@ -707,7 +707,7 @@ public class SqlQueries {
 
 		sqlString.append(" select distinct f.fid, f.aprobat from personal p, functii_non_vanzari f ");
 		sqlString.append(" where p.filiala = (select filiala from personal where cod=?) ");
-		sqlString.append(" and p.functie in ('SMR','SDIP','DZ') and p.functie = f.aprobat and f.cod=? ");
+		sqlString.append(" and p.functie in ('SDIP','DZ') and p.functie = f.aprobat and f.cod=? ");
 
 		return sqlString.toString();
 
