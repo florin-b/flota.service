@@ -734,6 +734,16 @@ public class SqlQueries {
 		return sqlString.toString();
 
 	}
+	
+	public static String getCodAprobareMP() {
+		StringBuilder sqlString = new StringBuilder();
+		
+		sqlString.append(" select f.fid, f.aprobat, p.departament from personal p, functii_non_vanzari f where p.cod =? and " );
+		sqlString.append(" p.functie = f.cod and f.aprobat in ('DD', 'DLOG') ");
+
+		return sqlString.toString();
+
+	}
 
 	public static String getCodAprobareKA08() {
 		StringBuilder sqlString = new StringBuilder();

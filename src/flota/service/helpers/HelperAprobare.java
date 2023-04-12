@@ -44,6 +44,8 @@ public class HelperAprobare {
 			codAprobare = getCodAprobareCVA(conn, delegatie.getCodAngajat(), delegatie.getTipAngajat());
 		else if (delegatie.getTipAngajat().trim().equalsIgnoreCase("RGEST"))
 			codAprobare = getCodAprobareRGEST(conn, delegatie.getCodAngajat(), delegatie.getTipAngajat());
+		else if (delegatie.getTipAngajat().trim().equalsIgnoreCase("MP"))
+			codAprobare = getCodAprobareMP(conn, delegatie.getCodAngajat());
 		else
 			codAprobare = getCodAprobareGeneral(conn, delegatie.getCodAngajat());
 
@@ -563,6 +565,47 @@ public class HelperAprobare {
 
 		return codAprobare;
 
+	}
+	
+	
+	public static String getCodAprobareMP(Connection conn, String codAngajat){
+		
+		String codAprobare = null;
+		String codDD = null;
+		String codDLOG = null;
+		String departAngajat = null;
+
+		try (PreparedStatement stmt = conn.prepareStatement(SqlQueries.getCodAprobareMP());) {
+
+			stmt.setString(1, codAngajat);
+			stmt.executeQuery();
+
+			ResultSet rs = stmt.getResultSet();
+
+			while (rs.next()) {
+				
+				departAngajat = rs.getString("departament");
+
+				if (rs.getString("aprobat").equalsIgnoreCase("DD"))
+					codDD = rs.getString("fid");
+
+				if (rs.getString("aprobat").equalsIgnoreCase("DLOG"))
+					codDLOG = rs.getString("fid");
+
+			}
+
+			if (departAngajat != null)
+				codAprobare = codDD;
+			else
+				codAprobare = codDLOG;
+
+		} catch (SQLException e) {
+			MailOperations.sendMail(e.toString());
+			logger.error(Utils.getStackTrace(e));
+		}
+
+		return codAprobare;
+		
 	}
 	
 

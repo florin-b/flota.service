@@ -31,7 +31,7 @@ public class TestClass {
 		
 		//System.out.println(new OperatiiAngajat().getAngajati("DD", "BU90", "11", "00018768"));
 
-		//new OperatiiDelegatii().recalculeazaDelegatie("189594026646");
+		//new OperatiiDelegatii().recalculeazaDelegatie("196776341365");
 		
 		// System.out.println(new OperatiiAngajat().getAngajatCategorie("MS10",
 		// "
@@ -41,7 +41,7 @@ public class TestClass {
 
 		//System.out.println("De aprobat:" + new OperatiiDelegatii().getDelegatiiAprobari("DLOG", "GL90", ""));
 		
-		//System.out.println("De aprobat:" + new OperatiiDelegatii().getDelegatiiAprobari("DD", "BU90", "11"));
+		//System.out.println("De aprobat:" + new OperatiiDelegatii().getDelegatiiAprobari("DZ", "IS10", ""));
 
 		//new ServiceDelegatii().calculeazaKmSfarsitLuna();
 
@@ -80,12 +80,12 @@ public class TestClass {
 		
 		DelegatieNoua delegatie = new DelegatieNoua();
 
-		delegatie.setCodAngajat("00002066");
-		delegatie.setTipAngajat("DZ");
-		delegatie.setDataP("02-02-2023");
+		delegatie.setCodAngajat("00141119");
+		delegatie.setTipAngajat("MP");
+		delegatie.setDataP("02-05-2023");
 		delegatie.setOraP("0500");
-		delegatie.setDataS("02-02-2023");
-		delegatie.setNrAuto("GL-09-DVM");
+		delegatie.setDataS("02-05-2023");
+		delegatie.setNrAuto("GL-11-XJP");
 		delegatie.setDistcalc("21");
 		delegatie.setDistreal("21");
 
