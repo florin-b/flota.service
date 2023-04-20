@@ -969,7 +969,7 @@ public class SqlQueries {
 		sqlString.append(" select distinct a.pernr ");
 		sqlString.append(" from sapprd.anlz a join sapprd.anla b on b.anln1 = a.anln1 and b.anln2 = a.anln2 and b.mandt=a.mandt ");
 		sqlString.append(" join sapprd.aufk c on c.aufnr = a.caufn and c.mandt=a.mandt ");
-		sqlString.append(" where a.adatu<=? and a.bdatu >=? and b.deakt = '00000000' and a.mandt='900' ");
+		sqlString.append(" where a.adatu<=? and a.bdatu >=? and b.deakt = '00000000' and a.mandt='900' and a.xstil = ' ' ");
 		sqlString.append(" and trim(regexp_replace(c.ktext,'-| ','')) in (select distinct trim(regexp_replace(n.car_number,'-| ','')) ");
 		sqlString.append(" from websap.our_vehicles n where vcode =? ) ");
 
