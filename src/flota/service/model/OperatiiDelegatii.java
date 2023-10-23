@@ -128,6 +128,9 @@ public class OperatiiDelegatii {
 		if (tipAngajat.equals("DD") && codDepart.startsWith("04"))
 			unitLog += ",GL90"; 
 
+		if (tipAngajat.equals("DLOG") && unitLog.equals("BU90"))
+			unitLog += ",GL90"; 
+		
 		String unitLogQs = Utils.generateQs(unitLog);
 
 		String departQs = Utils.generateQs(codDepart);

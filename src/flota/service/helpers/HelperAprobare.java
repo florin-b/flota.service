@@ -532,7 +532,7 @@ public class HelperAprobare {
 	public static String getCodAprobareCVA(Connection conn, String codAngajat, String tipAngajat) {
 
 		String codAprobare = null;
-		String codSMG = null;
+		String codSDCVA = null;
 		String codDZ = null;
 
 		try (PreparedStatement stmt = conn.prepareStatement(SqlQueries.getCodAprobareCVA());) {
@@ -545,16 +545,16 @@ public class HelperAprobare {
 
 			while (rs.next()) {
 
-				if (rs.getString("aprobat").equalsIgnoreCase("SMG"))
-					codSMG = rs.getString("fid");
+				if (rs.getString("aprobat").equalsIgnoreCase("SDCVA"))
+					codSDCVA = rs.getString("fid");
 
 				if (rs.getString("aprobat").equalsIgnoreCase("DZ"))
 					codDZ = rs.getString("fid");
 
 			}
 
-			if (codSMG != null)
-				codAprobare = codSMG;
+			if (codSDCVA != null)
+				codAprobare = codSDCVA;
 			else
 				codAprobare = codDZ;
 

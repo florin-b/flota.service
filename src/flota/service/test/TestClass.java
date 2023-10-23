@@ -39,7 +39,7 @@ public class TestClass {
 		// ",
 		// ""));
 
-		//System.out.println("De aprobat:" + new OperatiiDelegatii().getDelegatiiAprobari("DLOG", "GL90", ""));
+		System.out.println("De aprobat:" + new OperatiiDelegatii().getDelegatiiAprobari("DLOG", "BU90", ""));
 		
 		//System.out.println("De aprobat:" + new OperatiiDelegatii().getDelegatiiAprobari("DZ", "IS10", ""));
 
@@ -80,12 +80,12 @@ public class TestClass {
 		
 		DelegatieNoua delegatie = new DelegatieNoua();
 
-		delegatie.setCodAngajat("00141119");
-		delegatie.setTipAngajat("MP");
-		delegatie.setDataP("02-05-2023");
+		delegatie.setCodAngajat("00020779");
+		delegatie.setTipAngajat("RGEST");
+		delegatie.setDataP("04-10-2023");
 		delegatie.setOraP("0500");
-		delegatie.setDataS("02-05-2023");
-		delegatie.setNrAuto("GL-11-XJP");
+		delegatie.setDataS("05-10-2023");
+		delegatie.setNrAuto("B-110-DTV");
 		delegatie.setDistcalc("21");
 		delegatie.setDistreal("21");
 
